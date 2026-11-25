@@ -1,0 +1,387 @@
+/* =========================================================================
+       CORE THEME & CINEMATIC ARENA STYLING
+       ========================================================================= */
+    :root {
+      --bg-deep: #030616;
+      --bg-mid: #0b1230;
+      --neon-purple: #a855f7;
+      --neon-blue: #00b4ff;
+      --neon-orange: #ff9500;
+      --neon-magenta: #c026d3;
+      --neon-green: #10b981;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background-color: var(--bg-deep);
+      color: #f8fafc;
+      font-family: 'Outfit', sans-serif;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Main Arena Wrapper */
+    #arena-wrapper {
+      position: relative;
+      min-height: 100vh;
+      width: 100%;
+      background:
+        radial-gradient(ellipse at 83% 26%, rgba(56, 189, 248, 0.22) 0%, rgba(11, 18, 48, 0) 44%),
+        radial-gradient(ellipse at 52% 62%, rgba(139, 92, 246, 0.16) 0%, rgba(3, 6, 22, 0) 48%),
+        linear-gradient(180deg, #030616 0%, #070d26 42%, #0b1230 74%, #040718 100%);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Screen Shake on Stone Impact */
+    @keyframes screenShake {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      15% { transform: translate(-8px, -5px) rotate(-0.45deg); }
+      30% { transform: translate(8px, 5px) rotate(0.45deg); }
+      45% { transform: translate(-6px, 3px) rotate(-0.25deg); }
+      60% { transform: translate(6px, -4px) rotate(0.25deg); }
+      78% { transform: translate(-3px, 2px) rotate(0deg); }
+    }
+    .shake-impact {
+      animation: screenShake 0.44s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    }
+
+    /* High-DPI Atmospheric Canvas (Stars, Mountains, Waterfall, Mist, Lake Ripples) */
+    #bg-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* High-DPI Interactive FX Canvas (Neon Paths, Cracks, Textured Rock Shards, Sparks) */
+    #fx-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 40;
+      pointer-events: none;
+    }
+
+    /* Foreground Framing Foliage & Overhanging Cliff Canopy */
+    .foreground-frame {
+      position: absolute;
+      inset: 0;
+      z-index: 25;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    /* =========================================================================
+       HERO TYPOGRAPHY & NAVIGATION
+       ========================================================================= */
+    .gradient-creative {
+      background: linear-gradient(95deg, #d8b4fe 0%, #a855f7 48%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 24px rgba(168, 85, 247, 0.5));
+    }
+
+    .nav-link {
+      position: relative;
+      transition: color 0.25s ease, transform 0.2s ease;
+    }
+    .nav-link:hover {
+      color: #f3e8ff;
+      transform: translateY(-1px);
+    }
+    .nav-link.active {
+      color: #d8b4fe;
+    }
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -8px;
+      height: 2.5px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #a855f7, #38bdf8);
+      box-shadow: 0 0 12px #a855f7;
+    }
+
+    /* =========================================================================
+       PHOTOREALISTIC PROCEDURAL 3D STONE BOULDERS
+       ========================================================================= */
+    .stone-card {
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), filter 0.32s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .stone-card:hover:not(.stone-broken) {
+      transform: translateY(-7px) scale(1.035);
+      filter: brightness(1.08);
+    }
+
+    .stone-visual-wrap {
+      position: relative;
+      width: 242px;
+      height: 174px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.24s ease, opacity 0.24s ease, filter 0.24s ease;
+    }
+
+    .stone-projects .stone-visual-wrap {
+      width: 274px;
+      height: 192px;
+    }
+
+    .stone-coderarmy .stone-visual-wrap {
+      width: 256px;
+      height: 174px;
+    }
+
+    /* Procedural Granite Rock Canvas */
+    .stone-rock-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+      filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.85));
+    }
+
+    /* Overlay Icon + Text on Boulder Face */
+    .stone-content {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      pointer-events: none;
+      padding-top: 6px;
+    }
+
+    /* Multi-Layered Neon Energy Ring Wrapping Base of Each Boulder */
+    .stone-ring-outer {
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 112%;
+      height: 50px;
+      border-radius: 50%;
+      border: 3px solid var(--stone-color);
+      box-shadow:
+        0 0 18px var(--stone-color),
+        0 0 42px var(--stone-color),
+        inset 0 0 22px var(--stone-color);
+      opacity: 0.92;
+      z-index: 3;
+      pointer-events: none;
+      animation: ringPulse 2.6s ease-in-out infinite alternate;
+    }
+
+    .stone-ring-inner {
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 36px;
+      border-radius: 50%;
+      border: 1.5px solid #ffffff;
+      box-shadow: 0 0 16px var(--stone-color), 0 0 28px var(--stone-color);
+      opacity: 0.72;
+      z-index: 3;
+      pointer-events: none;
+      animation: ringPulse 2.6s ease-in-out infinite alternate-reverse;
+    }
+
+    /* Ambient Colored Ground Glow Under Boulder */
+    .stone-ground-glow {
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120%;
+      height: 48px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, var(--stone-color) 0%, transparent 72%);
+      opacity: 0.42;
+      filter: blur(14px);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    @keyframes ringPulse {
+      0% { transform: translateX(-50%) scale(0.97); opacity: 0.78; }
+      100% { transform: translateX(-50%) scale(1.035); opacity: 1; }
+    }
+
+    /* Color Variables for the 4 Stones */
+    .stone-about     { --stone-color: #ff9500; }
+    .stone-projects  { --stone-color: #00b4ff; }
+    .stone-coderarmy { --stone-color: #c026d3; }
+    .stone-contact   { --stone-color: #10b981; }
+
+    /* Micro "DRIVE TO SMASH" Label */
+    .smash-micro {
+      position: absolute;
+      top: -28px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: rgba(226, 232, 240, 0.88);
+      text-shadow: 0 0 12px var(--stone-color);
+      pointer-events: none;
+      z-index: 15;
+      transition: transform 0.22s ease, color 0.22s ease, opacity 0.22s ease;
+    }
+
+    .smash-micro.hover-only {
+      opacity: 0;
+      transform: translateX(-50%) translateY(6px);
+    }
+    .stone-card:hover:not(.stone-broken) .smash-micro {
+      opacity: 1;
+      color: #ffffff;
+      transform: translateX(-50%) translateY(-2px);
+    }
+
+    /* Cracked / Shattered / Reforming States */
+    .stone-cracking .stone-visual-wrap {
+      filter: brightness(1.45) contrast(1.2);
+      transform: scale(1.04);
+    }
+    .stone-broken .stone-visual-wrap {
+      opacity: 0.04;
+      transform: scale(0.75);
+      filter: blur(5px);
+    }
+    .stone-broken .stone-ring-outer,
+    .stone-broken .stone-ring-inner {
+      opacity: 0.16;
+      transform: translateX(-50%) scale(1.22);
+      transition: all 0.35s ease;
+    }
+    .stone-broken .smash-micro {
+      opacity: 0 !important;
+    }
+
+    @keyframes stoneReform {
+      0% { transform: scale(0.68); opacity: 0; filter: brightness(2.4) blur(5px); }
+      60% { transform: scale(1.05); opacity: 1; filter: brightness(1.35) blur(0px); }
+      100% { transform: scale(1); opacity: 1; filter: brightness(1) blur(0px); }
+    }
+    .stone-reforming .stone-visual-wrap {
+      animation: stoneReform 0.58s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* =========================================================================
+       REALISTIC PARKED MATTE-BLACK SUPERBIKE & ACTIVE NEON RIDER
+       ========================================================================= */
+    #parked-bike-wrap {
+      position: relative;
+      width: 215px;
+      height: 126px;
+      z-index: 24;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.25s ease;
+      filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.92));
+    }
+
+    @keyframes engineIdleVibe {
+      0%, 100% { transform: translateY(0px) rotate(-1.5deg); }
+      50% { transform: translateY(-1.3px) rotate(-1.1deg); }
+    }
+    .bike-engine-idle {
+      animation: engineIdleVibe 0.22s ease-in-out infinite;
+    }
+
+    @keyframes ledHeadlightPulse {
+      0%, 100% { opacity: 0.58; transform: scaleX(0.95); }
+      50% { opacity: 1; transform: scaleX(1.08); }
+    }
+    .led-beam {
+      transform-origin: left center;
+      animation: ledHeadlightPulse 2.1s ease-in-out infinite;
+    }
+
+    /* Active Neon Rider (Flies along Bezier Path) */
+    #rider-actor {
+      position: fixed;
+      width: 158px;
+      height: 98px;
+      z-index: 45;
+      pointer-events: none;
+      opacity: 0;
+      transform-origin: center center;
+      filter: drop-shadow(0 0 16px rgba(192, 38, 211, 0.85)) drop-shadow(0 0 26px rgba(0, 180, 255, 0.55));
+      will-change: transform, left, top, opacity;
+    }
+
+    /* =========================================================================
+       GLASSMORPHIC GAME-HUB SECTION MODAL
+       ========================================================================= */
+    #section-modal {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: opacity 0.3s ease;
+    }
+    #modal-card {
+      background: linear-gradient(165deg, rgba(13, 18, 46, 0.95) 0%, rgba(5, 8, 24, 0.98) 100%);
+      border: 1.5px solid rgba(168, 85, 247, 0.45);
+      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.88), 0 0 50px rgba(168, 85, 247, 0.24);
+      transition: transform 0.36s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    }
+
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.45);
+      border-radius: 8px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: rgba(168, 85, 247, 0.55);
+      border-radius: 8px;
+    }
+
+    /* Responsive Scaling for Tablets & Mobile */
+    @media (max-width: 1024px) {
+      .stone-visual-wrap { width: 205px; height: 148px; }
+      .stone-projects .stone-visual-wrap { width: 226px; height: 162px; }
+      .stone-coderarmy .stone-visual-wrap { width: 215px; height: 150px; }
+      #parked-bike-wrap { width: 175px; height: 104px; }
+    }
+    @media (max-width: 768px) {
+      .stone-visual-wrap,
+      .stone-projects .stone-visual-wrap,
+      .stone-coderarmy .stone-visual-wrap {
+        width: 168px;
+        height: 126px;
+      }
+      #rider-actor {
+        width: 118px;
+        height: 74px;
+      }
+    }

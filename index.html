@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Portfolio — Rishi Raj | Explore Our Creative Journey</title>
+
+  <!-- Google Fonts: Outfit & Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- =========================================================================
+       HIGH-DPI INTERACTIVE FX CANVAS (Neon Path, Cracks, Textured Shards, Sparks)
+       ========================================================================= -->
+  <canvas id="fx-canvas"></canvas>
+
+  <!-- =========================================================================
+       ACTIVE ARMORED RIDER ON NEON PURPLE/CYAN SUPERBIKE (Hidden until Launch)
+       ========================================================================= -->
+  <div id="rider-actor" aria-hidden="true">
+    <svg viewBox="0 0 220 135" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full overflow-visible">
+      <defs>
+        <linearGradient id="neonFairing" x1="40" y1="40" x2="185" y2="95" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#e879f9" />
+          <stop offset="45%" stop-color="#9333ea" />
+          <stop offset="85%" stop-color="#0284c7" />
+          <stop offset="100%" stop-color="#38bdf8" />
+        </linearGradient>
+        <linearGradient id="riderSuit" x1="72" y1="15" x2="138" y2="75" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#1e1b4b" />
+          <stop offset="55%" stop-color="#312e81" />
+          <stop offset="100%" stop-color="#0f172a" />
+        </linearGradient>
+        <linearGradient id="riderBeam" x1="184" y1="64" x2="265" y2="64" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.95" />
+          <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+        </linearGradient>
+        <radialGradient id="wheelGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="65%" stop-color="#090d22" />
+          <stop offset="92%" stop-color="#c026d3" />
+          <stop offset="100%" stop-color="#38bdf8" />
+        </radialGradient>
+      </defs>
+
+      <!-- Headlight Speed Beam -->
+      <polygon points="182,60 265,36 265,86 182,70" fill="url(#riderBeam)" />
+
+      <!-- Exhaust Plasma Jet -->
+      <path d="M26 84 L-8 76 L14 88 L-14 96 L32 95 Z" fill="#e879f9" opacity="0.92" />
+      <path d="M26 86 L4 84 L18 90 L2 93 L30 92 Z" fill="#ffffff" opacity="0.85" />
+
+      <!-- Rear Tire & Glowing Neon Rim -->
+      <circle cx="52" cy="98" r="24" fill="#070a19" stroke="#1e293b" stroke-width="5" />
+      <circle cx="52" cy="98" r="18" fill="none" stroke="#c026d3" stroke-width="3" />
+      <circle cx="52" cy="98" r="11" fill="none" stroke="#38bdf8" stroke-width="2" stroke-dasharray="5 3" />
+      <circle cx="52" cy="98" r="4.5" fill="#e879f9" />
+
+      <!-- Front Tire & Glowing Neon Rim -->
+      <circle cx="172" cy="98" r="24" fill="#070a19" stroke="#1e293b" stroke-width="5" />
+      <circle cx="172" cy="98" r="18" fill="none" stroke="#00b4ff" stroke-width="3" />
+      <circle cx="172" cy="98" r="11" fill="none" stroke="#c026d3" stroke-width="2" stroke-dasharray="5 3" />
+      <circle cx="172" cy="98" r="4.5" fill="#7dd3fc" />
+
+      <!-- Swingarm & Engine Block -->
+      <path d="M52 98 L98 92 L114 72 L76 76 Z" fill="#1e293b" stroke="#475569" stroke-width="1.5" />
+      <path d="M92 98 L142 96 L150 76 L102 74 Z" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+
+      <!-- Sportbike Tail, Tank & Aerodynamic Fairing -->
+      <path d="M26 74 L74 64 L106 76 L146 52 L188 64 L176 86 L142 96 L88 94 L56 84 Z" fill="url(#neonFairing)" stroke="#f5d0fe" stroke-width="1.4" />
+      <!-- Sharp Neon Trim Accent -->
+      <path d="M46 74 L98 81 L152 60 L182 68" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" />
+      <!-- Inverted Front Fork -->
+      <line x1="150" y1="54" x2="172" y2="98" stroke="#cbd5e1" stroke-width="5" stroke-linecap="round" />
+      <line x1="154" y1="56" x2="174" y2="96" stroke="#a855f7" stroke-width="2" stroke-linecap="round" />
+      <!-- Tinted Aerodynamic Windscreen -->
+      <path d="M140 54 Q158 38 175 56 Z" fill="#38bdf8" opacity="0.65" stroke="#e0f2fe" stroke-width="1" />
+
+      <!-- Armored Rider Crouched into Racing Tuck -->
+      <!-- Back & Shoulder Armor -->
+      <path d="M74 58 Q102 28 136 42 L126 65 L86 68 Z" fill="url(#riderSuit)" stroke="#c084fc" stroke-width="1.8" />
+      <!-- Rider Knee & Boot -->
+      <path d="M86 64 L112 76 L98 94" stroke="#0f172a" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M86 64 L112 76 L98 94" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+      <!-- Rider Arm gripping Clip-ons -->
+      <path d="M118 48 L148 56" stroke="#1e1b4b" stroke-width="8" stroke-linecap="round" />
+      <path d="M118 48 L148 56" stroke="#c084fc" stroke-width="1.5" stroke-linecap="round" />
+      <!-- Sleek Helmet & Glowing Cyan Visor -->
+      <ellipse cx="138" cy="31" rx="15" ry="13" fill="#090d22" stroke="#e879f9" stroke-width="1.8" />
+      <path d="M143 26 Q155 27 152 36 L139 36 Z" fill="#00b4ff" />
+      <path d="M145 28 L151 30" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round" />
+    </svg>
+  </div>
+
+  <!-- =========================================================================
+       MAIN CINEMATIC ARENA
+       ========================================================================= -->
+  <div id="arena-wrapper">
+
+    <!-- High-DPI Atmospheric Canvas: Night Sky, Mountains, Animated Waterfall, Lake Reflections -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Foreground Framing: Overhanging Top-Right Tree Canopy + Bottom-Left/Right Rock & Fern Silhouettes -->
+    <div class="foreground-frame">
+      <!-- Top-Right Overhanging Tree Branch Silhouette -->
+      <svg viewBox="0 0 420 220" class="absolute top-0 right-0 w-56 md:w-96 opacity-90" fill="none">
+        <path d="M420 0 L420 110 C370 95 335 72 285 65 C315 45 345 28 380 0 Z" fill="#040b18" />
+        <path d="M350 0 C310 38 250 58 185 52 C230 32 265 18 295 0 Z" fill="#061426" />
+        <g fill="#081c24" opacity="0.92">
+          <ellipse cx="235" cy="34" rx="28" ry="12" transform="rotate(-14 235 34)" />
+          <ellipse cx="275" cy="48" rx="34" ry="14" transform="rotate(-8 275 48)" />
+          <ellipse cx="322" cy="58" rx="38" ry="15" transform="rotate(-18 322 58)" />
+          <ellipse cx="372" cy="42" rx="44" ry="18" transform="rotate(-10 372 42)" />
+        </g>
+      </svg>
+
+      <!-- Bottom-Left Textured Rock Outcrop & Tropical Ferns -->
+      <svg viewBox="0 0 360 220" class="absolute bottom-0 left-0 w-52 md:w-80 opacity-95" fill="none">
+        <defs>
+          <linearGradient id="fgRockL" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#2c2448" />
+            <stop offset="45%" stop-color="#131129" />
+            <stop offset="100%" stop-color="#040511" />
+          </linearGradient>
+        </defs>
+        <!-- Fern Fronds -->
+        <path d="M-8 220 C12 135 45 78 106 38 C64 95 45 152 30 220 Z" fill="#0c2824" />
+        <path d="M12 220 C42 150 86 105 155 82 C98 130 68 175 48 220 Z" fill="#133d2e" />
+        <path d="M-5 220 C6 158 18 112 58 66 C34 124 22 172 16 220 Z" fill="#184d37" opacity="0.7" />
+        <!-- Foreground Rocky Outcrop -->
+        <path d="M-10 220 L-10 148 L48 132 L112 146 L168 178 L224 220 Z" fill="url(#fgRockL)" stroke="rgba(192,132,252,0.22)" stroke-width="1.5" />
+      </svg>
+
+      <!-- Bottom-Right Tropical Fern Silhouette -->
+      <svg viewBox="0 0 320 220" class="absolute bottom-0 right-0 w-44 md:w-72 opacity-95 transform -scale-x-100" fill="none">
+        <path d="M-8 220 C16 140 52 86 118 48 C70 102 48 155 34 220 Z" fill="#0c2a22" />
+        <path d="M18 220 C50 158 95 116 168 95 C106 138 74 178 52 220 Z" fill="#144530" />
+        <path d="M-4 220 C8 168 24 126 68 86 C42 136 28 180 22 220 Z" fill="#1d603f" opacity="0.65" />
+      </svg>
+    </div>
+
+    <!-- =======================================================================
+         TOP NAVIGATION BAR
+         ======================================================================= -->
+    <header class="relative z-30 w-full max-w-7xl mx-auto px-5 md:px-10 pt-5 pb-2 flex items-center justify-between gap-4">
+      <!-- Left: Geometric Neon-Purple/White 'S' Emblem + "Our Portfolio" -->
+      <a href="#top" onclick="resetArena(true); return false;" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-slate-950/75 border border-purple-500/45 flex items-center justify-center shadow-[0_0_20px_rgba(168,85,247,0.45)] group-hover:scale-105 transition">
+          <svg viewBox="0 0 40 40" class="w-7 h-7" fill="none">
+            <path d="M20 4 L34 13 L20 22 L6 13 Z" fill="url(#sLogoTop)" />
+            <path d="M20 18 L34 27 L20 36 L6 27 Z" fill="rgba(168,85,247,0.28)" stroke="#f8fafc" stroke-width="2.2" />
+            <defs>
+              <linearGradient id="sLogoTop" x1="6" y1="4" x2="34" y2="22" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#ffffff" />
+                <stop offset="1" stop-color="#a855f7" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="font-display font-bold text-lg md:text-xl tracking-tight text-white">Our Portfolio</span>
+      </a>
+
+      <!-- Center: Navigation Links with Icons & Vertical Dividers -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
+        <button onclick="resetArena(true)" class="nav-link active flex items-center gap-2 py-1" data-nav="home">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1v-9.5z"/></svg>
+          Home
+        </button>
+        <span class="text-slate-700">|</span>
+        <button onclick="triggerStoneByKey('projects')" class="nav-link flex items-center gap-2 py-1" data-nav="projects">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
+          Projects
+        </button>
+        <span class="text-slate-700">|</span>
+        <button onclick="triggerStoneByKey('about')" class="nav-link flex items-center gap-2 py-1" data-nav="about">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2m8-10a4 4 0 100-8 4 4 0 000 8zm12 10v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"/></svg>
+          About Us
+        </button>
+        <span class="text-slate-700">|</span>
+        <button onclick="triggerStoneByKey('contact')" class="nav-link flex items-center gap-2 py-1" data-nav="contact">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Contact
+        </button>
+      </nav>
+
+      <!-- Right: Compact SFX Toggle + Pill Explore Button -->
+      <div class="flex items-center gap-2.5 sm:gap-3">
+        <button id="sfx-toggle" onclick="toggleSFX()" title="Toggle Synthesized Sound Effects"
+          class="px-3 py-2 rounded-full text-xs font-semibold tracking-wide bg-slate-950/75 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/15 transition flex items-center gap-1.5 shadow-[0_0_14px_rgba(0,180,255,0.22)]">
+          <span id="sfx-icon">🔊</span>
+          <span id="sfx-label" class="hidden sm:inline">SFX ON</span>
+        </button>
+
+        <button onclick="triggerStoneByKey('coderarmy')"
+          class="px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold text-white bg-purple-950/65 border border-purple-400/65 hover:bg-purple-600/35 hover:border-purple-300 transition shadow-[0_0_22px_rgba(168,85,247,0.48)] flex items-center gap-2">
+          <span>Explore</span>
+          <span>&rarr;</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- =======================================================================
+         HERO SECTION & INTERACTIVE BOULDER ARENA
+         ======================================================================= -->
+    <main class="relative z-20 flex-1 w-full max-w-7xl mx-auto px-5 md:px-10 pt-4 md:pt-7 pb-14 flex flex-col justify-between">
+
+      <!-- Upper-Left Hero Typography -->
+      <section class="max-w-xl">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="text-[11px] sm:text-xs font-semibold tracking-[0.25em] text-slate-300 uppercase">Welcome to our portfolio</span>
+          <span class="h-[1px] w-16 bg-gradient-to-r from-purple-400/80 to-transparent"></span>
+        </div>
+
+        <h1 class="font-display font-extrabold text-4xl sm:text-5xl md:text-[3.85rem] leading-[1.04] tracking-tight text-white">
+          Explore Our<br />
+          <span class="relative inline-block">
+            <span class="gradient-creative">Creative</span>
+            <svg viewBox="0 0 240 16" class="w-full h-3.5 -mt-1 overflow-visible" fill="none">
+              <path d="M3 12 Q115 2 236 9" stroke="url(#heroBrushGrad)" stroke-width="4.2" stroke-linecap="round" />
+              <defs>
+                <linearGradient id="heroBrushGrad" x1="0" y1="0" x2="240" y2="0" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#c084fc" />
+                  <stop offset="0.58" stop-color="#a855f7" />
+                  <stop offset="1" stop-color="#38bdf8" stop-opacity="0.2" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </span>
+          <span> Journey</span>
+        </h1>
+
+        <p class="mt-4 text-sm sm:text-base text-slate-300/90 max-w-md leading-relaxed">
+          Discover our projects, skills and achievements crafted with passion and innovation.
+        </p>
+
+        <!-- Interactive Status Cue -->
+        <div class="mt-4 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-950/75 border border-purple-500/40 text-xs text-purple-200 shadow-[0_0_20px_rgba(168,85,247,0.22)]">
+          <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+          <span>Hover or click any glowing boulder to launch the Rider &amp; smash it!</span>
+        </div>
+      </section>
+
+      <!-- Lower Arena: Parked Realistic Matte-Black Superbike (Left) + 4 Procedural 3D Boulders -->
+      <section id="stones-arena" class="relative mt-10 md:mt-4 w-full flex flex-col md:block md:h-[380px]">
+
+        <!-- Left Corner Rocky Ledge + Realistic Matte-Black Carbon Superbike -->
+        <div id="bike-home-anchor" class="hidden md:flex flex-col items-center absolute left-[-6px] bottom-[34px] z-20">
+          <!-- Parked Realistic Matte-Black / Carbon-Fiber Superbike -->
+          <div id="parked-bike-wrap" class="bike-engine-idle -mb-5">
+            <svg viewBox="0 0 260 150" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full overflow-visible">
+              <defs>
+                <!-- Matte Carbon-Fiber Metallic Gradients -->
+                <linearGradient id="carbonBody" x1="45" y1="32" x2="210" y2="112" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#475569" />
+                  <stop offset="28%" stop-color="#1e2433" />
+                  <stop offset="65%" stop-color="#0b0f19" />
+                  <stop offset="100%" stop-color="#334155" />
+                </linearGradient>
+                <linearGradient id="metallicFork" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#cbd5e1" />
+                  <stop offset="50%" stop-color="#64748b" />
+                  <stop offset="100%" stop-color="#1e293b" />
+                </linearGradient>
+                <linearGradient id="exhaustMetal" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#334155" />
+                  <stop offset="55%" stop-color="#94a3b8" />
+                  <stop offset="100%" stop-color="#1e293b" />
+                </linearGradient>
+                <linearGradient id="ledLightBeam" x1="216" y1="74" x2="315" y2="74" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#e0f2fe" stop-opacity="0.72" />
+                  <stop offset="35%" stop-color="#38bdf8" stop-opacity="0.28" />
+                  <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+                </linearGradient>
+                <pattern id="carbonWeave" width="6" height="6" patternUnits="userSpaceOnUse">
+                  <rect width="6" height="6" fill="#0f1422" />
+                  <path d="M0 0 L3 0 L3 3 L0 3 Z M3 3 L6 3 L6 6 L3 6 Z" fill="#1e2638" opacity="0.6" />
+                </pattern>
+              </defs>
+
+              <!-- Softly Pulsing LED Headlight Beam -->
+              <polygon class="led-beam" points="214,68 318,46 318,104 214,82" fill="url(#ledLightBeam)" />
+
+              <!-- Ground Contact Shadow -->
+              <ellipse cx="132" cy="136" rx="102" ry="10" fill="rgba(0,0,0,0.75)" />
+
+              <!-- Rear Tire, Alloy Spokes & Perforated Brake Rotor -->
+              <g>
+                <circle cx="58" cy="108" r="29" fill="#05070e" stroke="#181e2c" stroke-width="6" />
+                <circle cx="58" cy="108" r="20" fill="#0b0f1a" stroke="#475569" stroke-width="2" />
+                <!-- Brake Disc Rotor -->
+                <circle cx="58" cy="108" r="13" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="3 2" />
+                <!-- Y-Spoke Alloy Rim -->
+                <path d="M58 88 L58 128 M40 98 L76 118 M76 98 L40 118" stroke="#64748b" stroke-width="2.4" />
+                <circle cx="58" cy="108" r="5" fill="#cbd5e1" stroke="#0f172a" stroke-width="1.5" />
+              </g>
+
+              <!-- Front Tire, Alloy Spokes, Dual Disc Rotor & Caliper -->
+              <g>
+                <circle cx="206" cy="108" r="28" fill="#05070e" stroke="#181e2c" stroke-width="6" />
+                <circle cx="206" cy="108" r="19" fill="#0b0f1a" stroke="#64748b" stroke-width="2" />
+                <!-- Perforated Brake Rotor -->
+                <circle cx="206" cy="108" r="14" fill="none" stroke="#cbd5e1" stroke-width="2.8" stroke-dasharray="3.5 2" />
+                <!-- Brake Caliper -->
+                <path d="M192 98 L199 95 L201 107 L193 109 Z" fill="#94a3b8" stroke="#0f172a" stroke-width="1" />
+                <!-- Alloy Spokes -->
+                <path d="M206 89 L206 127 M189 98 L223 118 M223 98 L189 118" stroke="#64748b" stroke-width="2.4" />
+                <circle cx="206" cy="108" r="5" fill="#e2e8f0" stroke="#0f172a" stroke-width="1.5" />
+              </g>
+
+              <!-- Swingarm, Chain & Mechanical Engine Core -->
+              <path d="M58 108 L112 100 L124 80 L84 86 Z" fill="#1e293b" stroke="#475569" stroke-width="1.5" />
+              <path d="M108 112 L166 112 L176 80 L114 78 Z" fill="#0d121f" stroke="#334155" stroke-width="1.5" />
+              <!-- Exhaust Header & Carbon Muffler -->
+              <path d="M68 106 L112 96 L114 103 L70 113 Z" fill="url(#exhaustMetal)" stroke="#0f172a" stroke-width="1.2" />
+
+              <!-- Matte-Black Sculpted Tail, Tank & Side Fairing -->
+              <path d="M24 62 L76 66 L108 74 L142 52 L174 52 L218 70 L204 94 L168 110 L118 106 L94 84 L54 74 Z" fill="url(#carbonBody)" stroke="#475569" stroke-width="1.4" />
+              <!-- Carbon Weave Panel Insert -->
+              <path d="M118 74 L168 58 L206 72 L192 94 L152 104 Z" fill="url(#carbonWeave)" stroke="#64748b" stroke-width="1" opacity="0.88" />
+              <!-- Metallic Specular Ridge Highlight -->
+              <path d="M108 66 Q142 46 176 54 L214 70" stroke="#cbd5e1" stroke-width="1.8" stroke-linecap="round" opacity="0.65" />
+              <path d="M126 84 L182 72 L204 78" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" opacity="0.5" />
+
+              <!-- Rider Saddle (Matte Alcantara) -->
+              <path d="M64 68 Q94 74 114 68 L110 75 Q88 80 62 73 Z" fill="#090d16" stroke="#334155" stroke-width="1" />
+
+              <!-- Smoked Aerodynamic Windscreen & Mirrors -->
+              <path d="M168 52 Q188 34 206 58 Z" fill="#1e293b" stroke="#94a3b8" stroke-width="1.2" opacity="0.88" />
+              <path d="M178 44 L190 36 L196 38" stroke="#64748b" stroke-width="2" stroke-linecap="round" />
+
+              <!-- USD Front Suspension Forks -->
+              <line x1="176" y1="54" x2="206" y2="108" stroke="url(#metallicFork)" stroke-width="6.5" stroke-linecap="round" />
+              <line x1="181" y1="56" x2="208" y2="106" stroke="#e2e8f0" stroke-width="1.6" stroke-linecap="round" opacity="0.7" />
+              <!-- Front Fender -->
+              <path d="M180 86 Q204 74 224 88" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" />
+
+              <!-- Sharp LED Headlight Eye -->
+              <path d="M204 68 L218 70 L213 77 L202 74 Z" fill="#e0f2fe" />
+              <circle cx="212" cy="72" r="3" fill="#38bdf8" />
+            </svg>
+          </div>
+          <!-- Procedural Realistic Rocky Ledge under Parked Bike -->
+          <canvas id="bike-ledge-canvas" width="220" height="72" class="w-[210px] h-[68px] pointer-events-none"></canvas>
+        </div>
+
+        <!-- 4 Photorealistic Procedurally-Textured 3D Stone Boulders -->
+        <div class="grid grid-cols-2 gap-x-4 gap-y-12 place-items-center md:block w-full h-full">
+
+          <!-- 1. ABOUT US (Left-Center, Fiery Orange-Gold Aura) -->
+          <div id="stone-about" data-section="about" data-color="#ff9500" data-seed="11"
+               class="stone-card stone-about md:absolute md:left-[18%] md:bottom-[78px] z-20"
+               role="button" tabindex="0" aria-label="Smash About Us Boulder">
+            <div class="smash-micro hover-only">DRIVE TO SMASH</div>
+            <div class="stone-ground-glow"></div>
+            <div class="stone-visual-wrap">
+              <canvas class="stone-rock-canvas" width="280" height="200"></canvas>
+              <div class="stone-content">
+                <svg class="w-9 h-9 md:w-11 md:h-11 mb-1 drop-shadow-[0_0_12px_#ff9500]" fill="none" stroke="#ffd166" stroke-width="2.1" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2m8-10a4 4 0 100-8 4 4 0 000 8zm12 10v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"/>
+                </svg>
+                <span class="font-display font-bold text-base md:text-xl text-white tracking-wide drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">About Us</span>
+                <span class="mt-2 w-7 h-7 rounded-full border border-amber-300/80 bg-black/35 flex items-center justify-center text-amber-200 text-xs shadow-[0_0_10px_rgba(255,149,0,0.45)]">&rarr;</span>
+              </div>
+              <div class="stone-ring-outer"></div>
+              <div class="stone-ring-inner"></div>
+            </div>
+          </div>
+
+          <!-- 2. PROJECTS (Center-Top Hero Boulder, Electric Cyan-Blue Aura) -->
+          <div id="stone-projects" data-section="projects" data-color="#00b4ff" data-seed="29"
+               class="stone-card stone-projects md:absolute md:left-[43%] md:bottom-[152px] z-20"
+               role="button" tabindex="0" aria-label="Smash Projects Boulder">
+            <div class="smash-micro">DRIVE TO SMASH</div>
+            <div class="stone-ground-glow"></div>
+            <div class="stone-visual-wrap">
+              <canvas class="stone-rock-canvas" width="310" height="218"></canvas>
+              <div class="stone-content">
+                <svg class="w-10 h-10 md:w-12 md:h-12 mb-1 drop-shadow-[0_0_14px_#00b4ff]" fill="none" stroke="#38bdf8" stroke-width="2.3" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M16 18l6-6-6-6M8 6l-6 6 6 6M14 4l-4 16"/>
+                </svg>
+                <span class="font-display font-extrabold text-lg md:text-2xl text-white tracking-wide drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">Projects</span>
+                <span class="mt-2 w-7 h-7 rounded-full border border-sky-300/85 bg-black/35 flex items-center justify-center text-sky-200 text-xs shadow-[0_0_12px_rgba(0,180,255,0.5)]">&rarr;</span>
+              </div>
+              <div class="stone-ring-outer"></div>
+              <div class="stone-ring-inner"></div>
+            </div>
+          </div>
+
+          <!-- 3. CODER ARMY (Center-Bottom Boulder, Vivid Purple-Magenta Aura) -->
+          <div id="stone-coderarmy" data-section="coderarmy" data-color="#c026d3" data-seed="47"
+               class="stone-card stone-coderarmy md:absolute md:left-[42%] md:bottom-[-10px] z-30"
+               role="button" tabindex="0" aria-label="Smash Coder Army Boulder">
+            <div class="smash-micro hover-only">DRIVE TO SMASH</div>
+            <div class="stone-ground-glow"></div>
+            <div class="stone-visual-wrap">
+              <canvas class="stone-rock-canvas" width="295" height="202"></canvas>
+              <div class="stone-content">
+                <svg class="w-9 h-9 md:w-11 md:h-11 mb-1 drop-shadow-[0_0_14px_#c026d3]" fill="none" stroke="#f0abfc" stroke-width="2.1" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 21h8m-4-4v4m-5-9a5 5 0 0010 0V5H7v7zm10-5h3v2a3 3 0 01-3 3m-10-5H4v2a3 3 0 003 3"/>
+                </svg>
+                <span class="font-display font-extrabold text-sm md:text-lg text-white tracking-wider uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">CODER ARMY</span>
+                <span class="mt-2 w-7 h-7 rounded-full border border-fuchsia-300/85 bg-black/35 flex items-center justify-center text-fuchsia-200 text-xs shadow-[0_0_12px_rgba(192,38,211,0.55)]">&rarr;</span>
+              </div>
+              <div class="stone-ring-outer"></div>
+              <div class="stone-ring-inner"></div>
+            </div>
+          </div>
+
+          <!-- 4. CONTACT (Right Boulder, Electric Neon Green Aura) -->
+          <div id="stone-contact" data-section="contact" data-color="#10b981" data-seed="73"
+               class="stone-card stone-contact md:absolute md:right-[3%] md:bottom-[72px] z-20"
+               role="button" tabindex="0" aria-label="Smash Contact Boulder">
+            <div class="smash-micro">DRIVE TO SMASH</div>
+            <div class="stone-ground-glow"></div>
+            <div class="stone-visual-wrap">
+              <canvas class="stone-rock-canvas" width="280" height="200"></canvas>
+              <div class="stone-content">
+                <svg class="w-9 h-9 md:w-11 md:h-11 mb-1 drop-shadow-[0_0_14px_#10b981]" fill="none" stroke="#4ade80" stroke-width="2.1" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+                <span class="font-display font-bold text-base md:text-xl text-white tracking-wide drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">Contact</span>
+                <span class="mt-2 w-7 h-7 rounded-full border border-emerald-300/85 bg-black/35 flex items-center justify-center text-emerald-200 text-xs shadow-[0_0_12px_rgba(16,185,129,0.5)]">&rarr;</span>
+              </div>
+              <div class="stone-ring-outer"></div>
+              <div class="stone-ring-inner"></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom Center: Minimalist Mouse Icon + Scroll Down + Chevron -->
+    <footer class="relative z-30 pb-4 pt-1 flex flex-col items-center justify-center text-center pointer-events-none">
+      <div class="w-5 h-8 rounded-full border border-slate-300/75 flex items-start justify-center p-1 mb-1">
+        <span class="w-1 h-2 rounded-full bg-purple-300 animate-bounce"></span>
+      </div>
+      <span class="text-xs font-medium tracking-wide text-slate-200/90">Scroll Down</span>
+      <svg class="w-3.5 h-3.5 text-slate-300/80 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </footer>
+  </div>
+
+  <!-- =========================================================================
+       DARK GLASSMORPHIC GAME-HUB MODAL
+       ========================================================================= -->
+  <div id="section-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-slate-950/75 opacity-0" role="dialog" aria-modal="true">
+    <div id="modal-card" class="relative w-full max-w-4xl max-h-[88vh] rounded-3xl overflow-hidden flex flex-col transform scale-95 opacity-0">
+      <div id="modal-accent-bar" class="h-1.5 w-full bg-gradient-to-r from-purple-500 via-cyan-400 to-fuchsia-500"></div>
+
+      <!-- Modal Header -->
+      <div class="px-6 sm:px-8 pt-5 pb-4 border-b border-white/10 flex items-center justify-between gap-4">
+        <div>
+          <span id="modal-eyebrow" class="text-[11px] font-display font-bold tracking-[0.22em] uppercase text-cyan-400">SECTION UNLOCKED</span>
+          <h2 id="modal-title" class="font-display font-extrabold text-2xl sm:text-3xl text-white mt-0.5">Title</h2>
+        </div>
+        <button onclick="closeModal()" aria-label="Close and return to arena"
+          class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/15 border border-white/15 flex items-center justify-center text-slate-200 transition">
+          &#10005;
+        </button>
+      </div>
+
+      <!-- Modal Scrollable Content -->
+      <div id="modal-body" class="p-6 sm:p-8 overflow-y-auto custom-scroll space-y-6"></div>
+
+      <!-- Modal Footer -->
+      <div class="px-6 sm:px-8 py-4 border-t border-white/10 bg-slate-950/60 flex flex-wrap items-center justify-between gap-3">
+        <span class="text-xs text-slate-400">Boulder shattered! Return to reform the stone &amp; park the superbike.</span>
+        <button onclick="closeModal()"
+          class="px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide text-white bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-500 hover:to-cyan-500 shadow-[0_0_22px_rgba(168,85,247,0.45)] transition flex items-center gap-2">
+          <span>&#8634; RESET STONES / BACK TO ARENA</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       TOAST NOTIFICATION BOX (Replaces alert())
+       ========================================================================= -->
+  <div id="toast-box" class="fixed bottom-6 right-6 z-[60] max-w-sm px-5 py-3.5 rounded-2xl bg-slate-900/95 border border-cyan-400/55 text-sm text-white shadow-[0_12px_38px_rgba(0,0,0,0.72)] transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <div id="toast-msg" class="font-medium"></div>
+  </div>
+
+  <!-- =========================================================================
+       PORTFOLIO CONFIG, PROCEDURAL ROCK GENERATOR & GAME ENGINE
+       ========================================================================= -->
+  <script src="script.js"></script>
+</body>
+</html>
